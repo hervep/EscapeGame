@@ -1,0 +1,55 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #fff; /* Fond blanc par défaut */
+}
+
+.container {
+    text-align: center;
+}
+
+#countdown {
+    font-size: 24px;
+    color: red;
+}
+
+#teamNameInput {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+#passwordInput {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+#submitButton {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007700;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Styles pour les pages de résultat */
+#result-page {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+}
+
+#win-page {
+    background-color: green;
+}
+
+#lose-page {
+    background-color: red;
+}
