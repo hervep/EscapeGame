@@ -4,8 +4,13 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    font-size: x-large;
+    font-weight: bold;
     margin: 0;
     background-color: #fff; /* Fond blanc par défaut */
+    background-image:url("images/escape.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .container {
@@ -44,12 +49,15 @@ body {
     align-items: center;
     height: 100vh;
     color: white;
+    
 }
 
 #win-page {
     background-color: green;
+    font-size: xx-large;
 }
 
 #lose-page {
     background-color: red;
+    font-size: xx-large;
 }
