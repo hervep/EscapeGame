@@ -4,11 +4,11 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-size: x-large;
+    font-size: xx-large;
     font-weight: bold;
     margin: 0;
     background-color: #fff; /* Fond blanc par défaut */
-    background-image:url("images/escape.jpg");
+    background-image:url("images/escap.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -18,7 +18,7 @@ body {
 }
 
 #countdown {
-    font-size: 24px;
+    font-size: 50px;
     color: red;
 }
 
@@ -30,6 +30,10 @@ body {
 #passwordInput {
     margin-top: 10px;
     padding: 10px;
+}
+.toggle-password-icon {
+    vertical-align: middle;
+    cursor: pointer;
 }
 
 #submitButton {
@@ -54,10 +58,10 @@ body {
 
 #win-page {
     background-color: green;
-    font-size: x-large;
+    font-size: xx-large;
 }
 
 #lose-page {
-    background-color: red;
-    font-size: x-large;
+    background-color: whitesmoke;
+    font-size: xx-large;
 }

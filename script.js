@@ -1,9 +1,9 @@
 let attempts = 3;
 let countdown = 240;
-let motsDePasseIncorrects = [];
+let motsDePasseIncorrects = ['',0];
 let motProche = [];
 
-const password = "34167910X4CARU38270063615"; // Remplacez ceci par votre mot de passe
+const password = "34167910X4CARU38270063815"; // Remplacez ceci par votre mot de passe
 
 const countdownElement = document.getElementById("countdown");
 const teamNameInput = document.getElementById("teamNameInput");
@@ -44,8 +44,8 @@ const showResultPage = (isWin) => {
 
     const message = document.createElement("p");
     message.textContent = isWin
-        ? `Congratulations, ${teamNameInput.value} ! You found the password at ${new Date().toLocaleTimeString()}.`
-        : `Sorry, your most close response was ${motProche.motDePasse}, with a match percentage of ${motProche.pourcentage}%`;
+        ? `Congratulations, ${teamNameInput.value} You found the password at ${new Date().toLocaleTimeString()}.`
+        : `Sorry, ${teamNameInput.value} your most close response was ${motProche.motDePasse}, with a match percentage of ${motProche.pourcentage}%`;
 
     resultPage.appendChild(message);
     document.body.innerHTML = "";
@@ -62,6 +62,7 @@ const updateCountdown = () => {
     const userPassword = passwordInput.value;
     if (countdown === 0 && userPassword != password) {
         countdownElement.style.color = "red";
+        motProche = motsDePasseIncorrects.reduce((prev, current) => (prev.pourcentage > current.pourcentage) ? prev : current);
         showResultPage(false);
     }
 };
@@ -91,6 +92,16 @@ setInterval(() => {
     countdown--;
     updateCountdown();
 }, 1000);
+
+document.addEventListener('DOMContentLoaded', function () {
+    var passwordInput = document.getElementById('passwordInput');
+    var toggleButton = document.getElementById('togglePassword');
+
+    toggleButton.addEventListener('click', function () {
+        // Change le type de l'input entre 'password' et 'text'
+        passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+    });
+});
 
 submitButton.addEventListener("click", checkPassword);
 // Ajouter un écouteur d'événements 'keydown' sur le champ de mot de passe
