@@ -1,7 +1,9 @@
 let attempts = 3;
-let countdown = 180;
+let countdown = 240;
+let motsDePasseIncorrects = [];
+let motProche = [];
 
-const password = "12345"; // Remplacez ceci par votre mot de passe
+const password = "34167910X4CARU38270063615"; // Remplacez ceci par votre mot de passe
 
 const countdownElement = document.getElementById("countdown");
 const teamNameInput = document.getElementById("teamNameInput");
@@ -13,6 +15,28 @@ const updateAttemptsLeft = () => {
     attemptsLeftElement.textContent = attempts;
 };
 
+//////////
+function calculerPourcentageCorrespondance(motDePasseSaisi, motDePasseCorrect) {
+    // Implémentez ici votre algorithme pour calculer le pourcentage de correspondance.
+    // Vous pouvez utiliser des algorithmes de comparaison de chaînes ou de similarité.
+    // Un exemple simple pourrait être la comparaison caractère par caractère.
+    let correspondances = 0;
+    for (let i = 0; i < motDePasseCorrect.length; i++) {
+        if (motDePasseCorrect[i] === motDePasseSaisi[i]) {
+            correspondances++;
+        }
+    }
+    return (correspondances / motDePasseCorrect.length) * 100;
+}
+
+//function motProche() {
+    // Trouver le mot de passe avec le pourcentage le plus élevé
+  //  let motProche = motsDePasseIncorrects.reduce((prev, current) => (prev.pourcentage > current.pourcentage) ? prev : current);
+    //console.log("Le mot de passe le plus proche était : " + motProche.motDePasse + " avec un pourcentage de correspondance de " + motProche.pourcentage + "%");
+//}
+
+
+//////////
 
 const showResultPage = (isWin) => {
     const resultPage = document.createElement("div");
@@ -21,7 +45,7 @@ const showResultPage = (isWin) => {
     const message = document.createElement("p");
     message.textContent = isWin
         ? `Congratulations, ${teamNameInput.value} ! You found the password at ${new Date().toLocaleTimeString()}.`
-        : "Sorry, you have exhausted your attempts.";
+        : `Sorry, your most close response was ${motProche.motDePasse}, with a match percentage of ${motProche.pourcentage}%`;
 
     resultPage.appendChild(message);
     document.body.innerHTML = "";
@@ -49,7 +73,10 @@ const checkPassword = () => {
     } else {
         attempts--;
         updateAttemptsLeft();
+        let pourcentageCorrespondance = calculerPourcentageCorrespondance(userPassword, password);
+        motsDePasseIncorrects.push({ motDePasse: userPassword, pourcentage: pourcentageCorrespondance });
         if (attempts === 0) {
+            motProche = motsDePasseIncorrects.reduce((prev, current) => (prev.pourcentage > current.pourcentage) ? prev : current);
             showResultPage(false);
         } else {
             passwordInput.value = "";
