@@ -1,5 +1,5 @@
 let attempts = 3;
-let countdown = 240;
+let countdown = 300;
 let motsDePasseIncorrects = ['',0];
 let motProche = [];
 
